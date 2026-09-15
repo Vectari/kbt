@@ -431,7 +431,7 @@ function KeyboardTester() {
             )}
           </div>
 
-          <h1>Keyboard Tester</h1>
+          <h1>KBoardTester.com - free keyboard tester</h1>
 
           <p>
             {isTesting
