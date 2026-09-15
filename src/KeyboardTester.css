@@ -59,13 +59,27 @@ body {
 .testing-badge {
   margin-left: 8px;
   padding: 4px 8px;
-  border: 1px solid #285c3c;
   border-radius: 5px;
-  background: #10281a;
-  color: #63c985;
   font-size: 9px;
   font-weight: 800;
   letter-spacing: 0.08em;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease,
+    box-shadow 0.2s ease;
+} /* TEST ACTIVE */
+.testing-badge.active {
+  border: 1px solid #285c3c;
+  background: #10281a;
+  color: #63c985;
+  box-shadow: 0 0 10px rgba(74, 222, 128, 0.06);
+} /* TEST INACTIVE */
+.testing-badge.inactive {
+  border: 1px solid #63333b;
+  background: #241216;
+  color: #e27785;
+  box-shadow: 0 0 10px rgba(239, 68, 68, 0.06);
 }
 .tester-header h1 {
   margin: 10px 0 7px;
@@ -176,13 +190,13 @@ body {
   color: #566171;
   font-size: 11px;
   text-align: right;
-}
+} /* -------------------------------------------------- START INFO / WYBÓR ROZMIARU -------------------------------------------------- */
 .start-info {
   max-width: 1500px;
   margin: 0 auto 20px;
-  padding: 16px 20px;
+  padding: 18px 20px;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 15px;
   border: 1px solid #202832;
   border-radius: 11px;
@@ -201,15 +215,77 @@ body {
   color: #9ba7b8;
   font-size: 18px;
 }
-.start-info strong {
+.start-info-content {
+  flex: 1;
+}
+.start-info-content > strong {
   color: #cbd3de;
   font-size: 13px;
 }
-.start-info p {
-  margin: 4px 0 0;
+.start-info-content > p {
+  margin: 4px 0 16px;
   color: #697587;
   font-size: 12px;
+} /* Selektor rozmiaru */
+.keyboard-size-selector {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
 }
+.selector-label {
+  color: #818c9c;
+  font-size: 11px;
+  font-weight: 700;
+}
+.size-options {
+  display: flex;
+  gap: 5px;
+  padding: 3px;
+  border: 1px solid #252d37;
+  border-radius: 8px;
+  background: #090c10;
+}
+.size-button {
+  min-width: 54px;
+  padding: 7px 10px;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  background: transparent;
+  color: #687485;
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    background 0.18s ease,
+    color 0.18s ease,
+    border-color 0.18s ease;
+}
+.size-button:hover {
+  color: #b5bfcc;
+  background: #171c23;
+}
+.size-button.selected {
+  border-color: #374250;
+  background: #222933;
+  color: #e0e6ed;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+}
+.selected-layout-info {
+  margin-top: 12px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: #5e6a7a;
+  font-size: 10px;
+}
+.selected-layout-info strong {
+  color: #9da9b8;
+}
+.layout-divider {
+  color: #3f4956;
+  margin: 0 3px;
+} /* -------------------------------------------------- KLAWIATURA -------------------------------------------------- */
 .keyboard-wrapper {
   max-width: 1500px;
   margin: 0 auto;
@@ -223,7 +299,8 @@ body {
     inset 0 1px 0 rgba(255, 255, 255, 0.025);
 }
 .keyboard {
-  min-width: 1250px;
+  width: 100%;
+  min-width: 1000px;
   display: flex;
   flex-direction: column;
   gap: 7px;
@@ -235,7 +312,7 @@ body {
 .key {
   position: relative;
   flex: 1 1 0;
-  min-width: 52px;
+  min-width: 45px;
   height: 57px;
   display: flex;
   align-items: center;
@@ -363,23 +440,62 @@ body {
 }
 .numpad-zero {
   flex: 2.05;
-} /* Odstępy między grupami klawiszy funkcyjnych */
+} /* -------------------------------------------------- SPECJALNE ODSTĘPY -------------------------------------------------- */ /* F1-F4 / F5-F8 / F9-F12 */
 .row-0 .key:nth-child(2),
 .row-0 .key:nth-child(6),
 .row-0 .key:nth-child(10) {
   margin-left: 14px;
-} /* Blok Home / End / Page */
-.row-1 .key:nth-child(15),
-.row-2 .key:nth-child(15) {
-  margin-left: 14px;
+} /* Blok nawigacyjny */
+.nav-key {
+  margin-left: 4px;
 } /* Numpad */
-.row-1 .key:nth-child(18),
-.row-2 .key:nth-child(18),
-.row-3 .key:nth-child(14),
-.row-4 .key:nth-child(14),
-.row-5 .key:nth-child(12) {
-  margin-left: 5px;
+.numpad-key {
+  margin-left: 0;
+} /* -------------------------------------------------- RÓŻNE ROZMIARY KLAWIATURY -------------------------------------------------- */ /* * 60% * * Brak F-row, nawigacji, numpada i strzałek. * Układ staje się znacznie bardziej kompaktowy. */
+.keyboard-size-60 {
+  min-width: 760px;
 }
+.keyboard-size-60 .keyboard-row {
+  gap: 5px;
+}
+.keyboard-size-60 .key {
+  min-width: 42px;
+  height: 53px;
+}
+.keyboard-size-60 .function {
+  height: 43px;
+} /* * 65% * * 60% + strzałki. */
+.keyboard-size-65 {
+  min-width: 820px;
+}
+.keyboard-size-65 .keyboard-row {
+  gap: 5px;
+}
+.keyboard-size-65 .key {
+  min-width: 43px;
+  height: 54px;
+} /* * 75% * * F-row + nawigacja + strzałki. * Bez numpada. */
+.keyboard-size-75 {
+  min-width: 950px;
+}
+.keyboard-size-75 .key {
+  min-width: 43px;
+}
+.keyboard-size-75 .function {
+  height: 44px;
+} /* * 80% * * TKL. */
+.keyboard-size-80 {
+  min-width: 1050px;
+}
+.keyboard-size-80 .key {
+  min-width: 45px;
+} /* * 100% * * Pełna klawiatura z numpadem. */
+.keyboard-size-100 {
+  min-width: 1250px;
+}
+.keyboard-size-100 .key {
+  min-width: 45px;
+} /* -------------------------------------------------- LEGENDA -------------------------------------------------- */
 .legend {
   max-width: 1500px;
   margin: 20px auto 0;
@@ -413,7 +529,7 @@ body {
 }
 .legend-key.untouched {
   background: #11151a;
-}
+} /* -------------------------------------------------- RESPONSIVE -------------------------------------------------- */
 @media (max-width: 900px) {
   .keyboard-tester {
     padding: 25px 15px;
@@ -429,6 +545,24 @@ body {
     width: 100%;
     flex-wrap: wrap;
   }
+  .start-info {
+    align-items: flex-start;
+  }
+  .keyboard-size-selector {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .size-options {
+    width: 100%;
+    justify-content: space-between;
+  }
+  .size-button {
+    flex: 1;
+  }
+  .selected-layout-info {
+    flex-wrap: wrap;
+  }
   .keyboard-wrapper {
     padding: 18px;
   }
@@ -436,4 +570,21 @@ body {
     justify-content: flex-start;
     flex-wrap: wrap;
   }
+}
+
+.success-title {
+  color: #79d99a !important;
+}
+
+.start-info-icon {
+  transition:
+    color 0.2s ease,
+    border-color 0.2s ease,
+    background 0.2s ease;
+}
+
+.start-info:has(.success-title) .start-info-icon {
+  border-color: #285c3c;
+  background: #10281a;
+  color: #4ade80;
 }
