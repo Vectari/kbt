@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./KeyboardTester.css";
 
 const keyboardRows = [
@@ -128,16 +128,38 @@ const keyboardRows = [
 const allKeys = keyboardRows.flat();
 
 function KeyboardTester() {
+  const [isTesting, setIsTesting] = useState(false);
   const [pressedKeys, setPressedKeys] = useState({});
   const [pressCounts, setPressCounts] = useState({});
   const [testedKeys, setTestedKeys] = useState({});
 
+  const testerRef = useRef(null);
+
   useEffect(() => {
     const handleKeyDown = (event) => {
-      const code = event.code;
+      // Jeżeli test nie jest aktywny,
+      // nie przejmujemy klawiatury.
+      if (!isTesting) return;
 
-      // Zapobiega wielokrotnemu zliczaniu przy przytrzymaniu klawisza
+      /*
+       * Najważniejsze:
+       * blokujemy standardowe działanie przeglądarki.
+       *
+       * Dzięki temu:
+       * Tab       -> nie zmienia focusu
+       * F1        -> nie otwiera pomocy
+       * Space     -> nie przewija strony
+       * Backspace -> nie wraca do poprzedniej strony
+       * strzałki  -> nie przewijają strony
+       * Enter     -> nie aktywuje przycisków
+       */
+      event.preventDefault();
+      event.stopPropagation();
+
+      // Nie zliczamy auto-repeat przy przytrzymaniu klawisza.
       if (event.repeat) return;
+
+      const code = event.code;
 
       setPressedKeys((prev) => ({
         ...prev,
@@ -147,6 +169,7 @@ function KeyboardTester() {
       setPressCounts((prev) => {
         const newCount = (prev[code] || 0) + 1;
 
+        // 4. naciśnięcie = klawisz przetestowany
         if (newCount > 3) {
           setTestedKeys((tested) => ({
             ...tested,
@@ -162,54 +185,110 @@ function KeyboardTester() {
     };
 
     const handleKeyUp = (event) => {
+      if (!isTesting) return;
+
+      event.preventDefault();
+      event.stopPropagation();
+
       setPressedKeys((prev) => ({
         ...prev,
         [event.code]: false,
       }));
     };
 
-    window.addEventListener("keydown", handleKeyDown);
-    window.addEventListener("keyup", handleKeyUp);
+    /*
+     * capture = true
+     *
+     * Pozwala przechwycić zdarzenie bardzo wcześnie,
+     * zanim większość elementów strony będzie mogła
+     * zareagować na klawisz.
+     */
+    window.addEventListener("keydown", handleKeyDown, true);
+    window.addEventListener("keyup", handleKeyUp, true);
 
     return () => {
-      window.removeEventListener("keydown", handleKeyDown);
-      window.removeEventListener("keyup", handleKeyUp);
+      window.removeEventListener("keydown", handleKeyDown, true);
+      window.removeEventListener("keyup", handleKeyUp, true);
     };
-  }, []);
+  }, [isTesting]);
 
   const testedCount = Object.keys(testedKeys).length;
   const totalKeys = allKeys.length;
   const progress = Math.round((testedCount / totalKeys) * 100);
 
+  const startTest = () => {
+    setIsTesting(true);
+
+    // Natychmiast oddajemy focus testerowi.
+    requestAnimationFrame(() => {
+      testerRef.current?.focus();
+    });
+  };
+
+  const stopTest = () => {
+    setIsTesting(false);
+    setPressedKeys({});
+  };
+
   const resetTest = () => {
+    setIsTesting(false);
     setPressedKeys({});
     setPressCounts({});
     setTestedKeys({});
   };
 
   return (
-    <div className="keyboard-tester">
+    <div
+      className="keyboard-tester"
+      ref={testerRef}
+      tabIndex={0}
+      onMouseDown={() => {
+        if (isTesting) {
+          testerRef.current?.focus();
+        }
+      }}
+    >
       <div className="tester-header">
         <div>
-          <span className="status-dot" />
-          <span className="eyebrow">HARDWARE DIAGNOSTICS</span>
+          <div className="title-line">
+            <span className={`status-dot ${isTesting ? "active" : ""}`} />
+
+            <span className="eyebrow">HARDWARE DIAGNOSTICS</span>
+
+            {isTesting && <span className="testing-badge">TEST AKTYWNY</span>}
+          </div>
 
           <h1>Keyboard Tester</h1>
 
           <p>
-            Naciśnij każdy klawisz <strong>4 razy</strong>, aby potwierdzić jego
-            poprawne działanie.
+            {isTesting
+              ? "Naciśnij każdy klawisz 4 razy, aby potwierdzić jego poprawne działanie."
+              : "Rozpocznij test, aby sprawdzić wszystkie klawisze swojej klawiatury."}
           </p>
         </div>
 
-        <button className="reset-button" onClick={resetTest}>
-          Reset testu
-        </button>
+        <div className="header-actions">
+          {!isTesting ? (
+            <button className="start-button" onClick={startTest}>
+              <span className="button-icon">▶</span>
+              Rozpocznij test
+            </button>
+          ) : (
+            <button className="stop-button" onClick={stopTest}>
+              Zakończ test
+            </button>
+          )}
+
+          <button className="reset-button" onClick={resetTest}>
+            Reset testu
+          </button>
+        </div>
       </div>
 
       <div className="progress-panel">
         <div className="progress-info">
           <span>Postęp testu</span>
+
           <strong>
             {testedCount} / {totalKeys}
           </strong>
@@ -221,6 +300,22 @@ function KeyboardTester() {
 
         <span className="progress-percent">{progress}%</span>
       </div>
+
+      {!isTesting && (
+        <div className="start-info">
+          <div className="start-info-icon">⌨</div>
+
+          <div>
+            <strong>Gotowy do testu?</strong>
+
+            <p>
+              Kliknij „Rozpocznij test”, a następnie naciskaj fizyczne klawisze
+              na klawiaturze. Podczas testu skróty przeglądarki zostaną
+              zablokowane.
+            </p>
+          </div>
+        </div>
+      )}
 
       <div className="keyboard-wrapper">
         <div className="keyboard">
@@ -239,6 +334,7 @@ function KeyboardTester() {
                       key.className || "",
                       isPressed ? "pressed" : "",
                       isTested ? "tested" : "",
+                      !isTesting ? "disabled" : "",
                     ]
                       .filter(Boolean)
                       .join(" ")}
