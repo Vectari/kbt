@@ -127,7 +127,7 @@ const keyboardRows = [
     { code: "AltLeft", label: "Alt", className: "modifier" },
     { code: "Space", label: "", className: "space" },
     { code: "AltRight", label: "Alt", className: "modifier" },
-    { code: "MetaRight", label: "Win", className: "modifier" },
+    // { code: "MetaRight", label: "Win", className: "modifier" },
     { code: "ContextMenu", label: "Menu", className: "modifier" },
     { code: "ControlRight", label: "Ctrl", className: "modifier" },
 

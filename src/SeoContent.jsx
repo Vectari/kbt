@@ -1,192 +1,319 @@
-import React from "react";
 import "./SeoContent.css";
+
+const faqItems = [
+  {
+    question: "How do I test my keyboard online?",
+    answer:
+      "Start the keyboard test and press each visible key on your physical keyboard. The tester detects your key presses in real time and shows which keys have been tested. Each key must be pressed three times before it is marked as successfully tested.",
+  },
+  {
+    question: "Can I test a laptop keyboard?",
+    answer:
+      "Yes. The keyboard tester works with laptop keyboards as well as external USB and wireless keyboards. Select the keyboard layout that most closely matches your physical keyboard and then start the test.",
+  },
+  {
+    question: "Can I test a mechanical keyboard?",
+    answer:
+      "Yes. Mechanical keyboards can be tested in the same way as standard keyboards. The tester can detect letters, numbers, modifiers, function keys, navigation keys and other supported keyboard inputs.",
+  },
+  {
+    question: "Do I need to install anything?",
+    answer:
+      "No. The keyboard tester runs directly in your web browser. There is no application, extension or additional software required.",
+  },
+  {
+    question: "Can I test individual keys?",
+    answer:
+      "Yes. The tester lets you check individual keys and see their status on the virtual keyboard. A key becomes marked as tested after it reaches the required number of presses.",
+  },
+  {
+    question: "Why is one of my keyboard keys not detected?",
+    answer:
+      "First, make sure the test is active and that the correct keyboard layout is selected. If other keys work but a particular physical key consistently produces no response, the issue may be related to the keyboard, its connection or the operating system.",
+  },
+  {
+    question: "Does the keyboard tester work on Windows, macOS and Linux?",
+    answer:
+      "Yes. The tester is browser-based and is designed to work with modern browsers on Windows, macOS and Linux.",
+  },
+  {
+    question: "Can I test a wireless keyboard?",
+    answer:
+      "Yes. A wireless keyboard can be tested as long as your computer recognizes it and key events are delivered to the browser.",
+  },
+];
+
+const keyboardSizes = [
+  {
+    size: "60%",
+    description:
+      "Compact keyboards without a dedicated function row, navigation cluster or number pad.",
+  },
+  {
+    size: "65%",
+    description:
+      "Compact layouts that usually add dedicated arrow keys and a small navigation section.",
+  },
+  {
+    size: "75%",
+    description:
+      "Compact keyboards with a function row and navigation keys while keeping a smaller footprint.",
+  },
+  {
+    size: "80%",
+    description:
+      "Tenkeyless-style layouts that keep the main keyboard and function row without a dedicated number pad.",
+  },
+  {
+    size: "100%",
+    description:
+      "Full-size keyboards with the main keyboard, function row, navigation keys and numeric keypad.",
+  },
+];
 
 function SeoContent() {
   return (
-    <section className="seo-content">
-      <div className="seo-content-inner">
-        <div className="seo-intro">
-          <span className="seo-eyebrow">ONLINE KEYBOARD DIAGNOSTICS</span>
+    <main className="seo-content">
+      {" "}
+      <section className="seo-intro">
+        {" "}
+        <span className="seo-eyebrow">ONLINE KEYBOARD TESTER</span>{" "}
+        <h2>Test Your Keyboard Online</h2>
+        ```
+        <p className="seo-lead">
+          Check whether your keyboard keys are working correctly with our free
+          online keyboard tester. Press the keys on your physical keyboard and
+          see their status instantly on the virtual keyboard above.
+        </p>
+        <p>
+          KBoardTester works directly in your browser, so there is nothing to
+          download or install. It can be used to test laptop keyboards,
+          mechanical keyboards, USB keyboards and wireless keyboards on Windows,
+          macOS and Linux.
+        </p>
+      </section>
+      <section className="seo-grid">
+        <article className="seo-card">
+          <span className="seo-card-number">01</span>
+          <h3>How to Test Your Keyboard</h3>
 
-          <h2>
-            Free Online Keyboard Tester for Windows, Linux and macOS
-          </h2>
+          <p>
+            Testing a keyboard is simple. Start the test using the button above
+            and then press the keys on your physical keyboard.
+          </p>
 
-          <p className="seo-lead">
-            Test your keyboard online with a fast, simple and completely
-            browser-based keyboard tester. Check individual keys, identify
-            unresponsive buttons and make sure your keyboard is working
-            correctly without downloading software or installing anything on
-            your computer.
+          <ol>
+            <li>Select the keyboard size that matches your keyboard.</li>
+            <li>
+              Click <strong>Start Test</strong>.
+            </li>
+            <li>Press each visible key three times.</li>
+            <li>Watch the virtual keyboard for the detected key presses.</li>
+            <li>Continue until all required keys are marked as tested.</li>
+          </ol>
+
+          <p>
+            The progress indicator shows how many keys have already been tested
+            and how many are still remaining.
+          </p>
+        </article>
+
+        <article className="seo-card">
+          <span className="seo-card-number">02</span>
+          <h3>What Keys Can You Test?</h3>
+
+          <p>
+            The tester supports a wide range of keyboard inputs, including
+            common letter and number keys as well as keys that are sometimes
+            overlooked during a basic keyboard check.
+          </p>
+
+          <ul>
+            <li>Letters A–Z</li>
+            <li>Number row and symbols</li>
+            <li>Function keys F1–F12</li>
+            <li>Escape, Tab and Caps Lock</li>
+            <li>Shift, Ctrl, Alt and Windows keys</li>
+            <li>Enter, Backspace and Space</li>
+            <li>Arrow keys</li>
+            <li>Insert, Delete, Home and End</li>
+            <li>Page Up and Page Down</li>
+            <li>Numeric keypad keys</li>
+          </ul>
+        </article>
+
+        <article className="seo-card">
+          <span className="seo-card-number">03</span>
+          <h3>Keyboard Tester for Windows, macOS and Linux</h3>
+
+          <p>
+            You can use the online keyboard tester on computers running Windows,
+            macOS or Linux. Because the test runs in a web browser, there is no
+            separate program to install.
+          </p>
+
+          <p>
+            This makes the tool useful when checking a new keyboard, diagnosing
+            a keyboard that may have a faulty key, testing a second-hand
+            keyboard or verifying that a recently connected device is responding
+            correctly.
+          </p>
+        </article>
+      </section>
+      <section className="seo-section">
+        <div className="seo-section-heading">
+          <span className="seo-eyebrow">LAYOUT SUPPORT</span>
+          <h2>Test Different Keyboard Sizes</h2>
+
+          <p>
+            Keyboard layouts vary significantly in size and key arrangement.
+            Choose the layout that matches your physical keyboard so the tester
+            only requires the keys that belong to that layout.
           </p>
         </div>
 
-        <div className="seo-grid">
-          <article className="seo-card">
-            <h3>Test Every Keyboard Key</h3>
-
-            <p>
-              Our online keyboard test makes it easy to check whether the keys
-              on your keyboard are responding correctly. The virtual keyboard
-              reacts instantly when you press a physical key, allowing you to
-              visually confirm that your input is being detected. Each key can
-              be tested multiple times, and successfully tested keys are
-              clearly highlighted so you can quickly identify which parts of
-              your keyboard are working and which keys may require further
-              attention.
-            </p>
-          </article>
-
-          <article className="seo-card">
-            <h3>Works Directly in Your Browser</h3>
-
-            <p>
-              There is nothing to download, install or configure. This
-              keyboard tester works directly online in your modern web browser,
-              making it a convenient solution for quick hardware diagnostics.
-              Whether you are checking a new keyboard, troubleshooting an
-              existing device or testing a keyboard after cleaning or repair,
-              you can open the tester and start checking your keys immediately.
-            </p>
-          </article>
-
-          <article className="seo-card">
-            <h3>Windows, Linux and macOS Compatible</h3>
-
-            <p>
-              The keyboard tester is designed to work across major desktop
-              operating systems including Windows, Linux and macOS. Because
-              the test runs in your browser, you can use the same convenient
-              interface regardless of which operating system powers your
-              computer. It is a practical online keyboard diagnostic tool for
-              desktops, laptops, mechanical keyboards, office keyboards and
-              many other standard input devices.
-            </p>
-          </article>
-
-          <article className="seo-card">
-            <h3>Choose Your Keyboard Layout Size</h3>
-
-            <p>
-              Different keyboards have different layouts, which is why the
-              tester supports several popular keyboard sizes. Choose between
-              60%, 65%, 75%, 80% and 100% layouts before starting your test.
-              The displayed keyboard automatically adapts to your selection,
-              allowing you to focus only on the keys that are actually present
-              on your keyboard.
-            </p>
-          </article>
-
-          <article className="seo-card">
-            <h3>Clear Test Progress</h3>
-
-            <p>
-              A dedicated progress indicator shows exactly how much of the
-              keyboard has already been tested. Every key must be pressed the
-              required number of times before it is marked as successfully
-              tested. Completed keys remain highlighted in green, making the
-              interface easy to understand even during a long keyboard
-              diagnostic session.
-            </p>
-          </article>
-
-          <article className="seo-card">
-            <h3>Test More Than Just Letters</h3>
-
-            <p>
-              A proper keyboard diagnostic should cover more than the alphabet.
-              The tester can recognize standard alphanumeric keys as well as
-              important keyboard controls such as Shift, Ctrl, Alt, Tab,
-              Enter, Backspace, Escape, function keys, navigation keys, arrow
-              keys, Windows keys and numeric keypad keys on supported layouts.
-              This makes it useful for finding subtle problems that might not
-              be noticed during everyday typing.
-            </p>
-          </article>
+        <div className="keyboard-size-grid">
+          {keyboardSizes.map((item) => (
+            <article className="layout-card" key={item.size}>
+              <div className="layout-card-size">{item.size}</div>
+              <p>{item.description}</p>
+            </article>
+          ))}
         </div>
-
-        <div className="seo-story">
-          <h3>A Simple, Fast and Reliable Keyboard Test</h3>
-
-          <p>
-            A keyboard is one of the most important input devices on any
-            computer, yet keyboard problems are often difficult to identify
-            until a specific key suddenly stops working. A faulty key can be
-            caused by dust, dirt, liquid damage, mechanical wear, damaged
-            switches, connection problems or other hardware issues. An online
-            keyboard tester gives you a quick way to investigate these
-            problems without relying on complicated diagnostic software.
-          </p>
+      </section>
+      <section className="seo-section">
+        <div className="seo-section-heading">
+          <span className="seo-eyebrow">TROUBLESHOOTING</span>
+          <h2>Common Keyboard Problems</h2>
 
           <p>
-            Our keyboard testing tool was created to make hardware checking as
-            straightforward as possible. Open the page, select the keyboard
-            size that matches your device and start pressing the keys. The
-            virtual keyboard provides immediate visual feedback and the test
-            progress makes it easy to see which keys have already been
-            confirmed. There are no unnecessary downloads, no installation
-            wizard and no complicated setup process.
-          </p>
-
-          <p>
-            The experience is designed to be clean, modern and remarkably easy
-            to use. Whether you are a computer enthusiast testing a brand-new
-            mechanical keyboard, a gamer checking a gaming keyboard, a
-            technician diagnosing a customer's laptop or simply someone who
-            wants to know whether every key works, this online keyboard tester
-            gives you a convenient place to perform a quick check.
-          </p>
-
-          <p>
-            The tester is especially useful when buying or selling used
-            keyboards and laptops. Before completing a purchase, you can use
-            the keyboard test to verify that important keys respond correctly.
-            Likewise, if you are selling a device, a completed keyboard test
-            can provide a simple way to demonstrate that the keyboard is
-            functioning properly.
-          </p>
-
-          <p>
-            From compact 60% keyboards to full-size 100% keyboards with a
-            dedicated numeric keypad, the tester is built to accommodate
-            different keyboard formats. The interface focuses on the
-            essentials: press a key, see the response, confirm the result and
-            continue until the entire keyboard has been checked.
-          </p>
-
-          <p>
-            Best of all, the keyboard tester is available online and works
-            without installation. You can use it on Windows, Linux and macOS
-            through a compatible modern browser. That makes it an excellent
-            first step whenever you need a quick keyboard check, whether at
-            home, at work, in a computer repair shop or while troubleshooting
-            a laptop.
-          </p>
-
-          <p>
-            Fast, beautiful, practical and wonderfully straightforward, this
-            keyboard tester is built to do one thing exceptionally well:
-            help you find out whether your keyboard works. No unnecessary
-            complexity, no bloated software and no installation required.
-            Just open the tester, press your keys and get clear visual
-            feedback in seconds.
+            A keyboard tester can help identify whether a problem affects an
+            individual key or whether the issue may be related to the keyboard
+            connection or computer.
           </p>
         </div>
 
-        <div className="seo-keywords">
-          <span>Online Keyboard Tester</span>
-          <span>Keyboard Test</span>
-          <span>Keyboard Checker</span>
-          <span>Keyboard Diagnostic</span>
+        <div className="problem-list">
+          <article className="problem-item">
+            <h3>One key does not respond</h3>
+            <p>
+              Test the key several times and compare its behavior with the
+              surrounding keys. If the same physical key consistently fails to
+              register, check the keyboard connection and try the keyboard on
+              another computer if possible.
+            </p>
+          </article>
+
+          <article className="problem-item">
+            <h3>Several keys are not working</h3>
+            <p>
+              If a group of keys does not respond, check whether the keyboard is
+              properly connected and recognized by your operating system. For
+              wireless keyboards, also check the receiver, Bluetooth connection
+              and battery.
+            </p>
+          </article>
+
+          <article className="problem-item">
+            <h3>Keys register inconsistently</h3>
+            <p>
+              Inconsistent input can sometimes be caused by a physical switch,
+              dirt or debris, connection problems or software settings. Testing
+              the keyboard in another browser or on another computer can help
+              narrow down the cause.
+            </p>
+          </article>
+
+          <article className="problem-item">
+            <h3>Some special keys behave differently</h3>
+            <p>
+              Certain system-level keys can behave differently depending on the
+              operating system, browser and keyboard hardware. The tester
+              focuses on keyboard input that can be detected by the browser.
+            </p>
+          </article>
+        </div>
+      </section>
+      <section className="seo-section use-cases-section">
+        <div className="seo-section-heading">
+          <span className="seo-eyebrow">WHEN TO USE IT</span>
+          <h2>Why Test Your Keyboard?</h2>
+        </div>
+
+        <div className="use-cases">
+          <div>
+            <h3>Buying a used keyboard</h3>
+            <p>
+              Check the important keys before buying a second-hand keyboard. A
+              quick test can help you verify that the device responds as
+              expected.
+            </p>
+          </div>
+
+          <div>
+            <h3>Checking a new keyboard</h3>
+            <p>
+              Test a new keyboard after connecting it to your computer to make
+              sure the keys are registering correctly.
+            </p>
+          </div>
+
+          <div>
+            <h3>Diagnosing keyboard issues</h3>
+            <p>
+              Use the visual keyboard and progress indicator to identify keys
+              that may not be registering correctly.
+            </p>
+          </div>
+
+          <div>
+            <h3>Testing a laptop</h3>
+            <p>
+              Quickly check the built-in keyboard on a laptop without installing
+              additional diagnostic software.
+            </p>
+          </div>
+        </div>
+      </section>
+      <section className="seo-section faq-section">
+        <div className="seo-section-heading">
+          <span className="seo-eyebrow">FAQ</span>
+          <h2>Frequently Asked Questions</h2>
+
+          <p>
+            Answers to common questions about using an online keyboard tester.
+          </p>
+        </div>
+
+        <div className="faq-list">
+          {faqItems.map((item) => (
+            <article className="faq-item" key={item.question}>
+              <h3>{item.question}</h3>
+              <p>{item.answer}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+      <section className="seo-final">
+        <span className="seo-eyebrow">KBOARDTESTER</span>
+        <h2>A Simple Keyboard Test in Your Browser</h2>
+
+        <p>
+          KBoardTester is designed to make keyboard testing quick and
+          straightforward. Open the tester, select your keyboard size and check
+          the keys directly from your browser.
+        </p>
+
+        <div className="keyword-chips">
+          <span>Keyboard Tester</span>
+          <span>Online Keyboard Test</span>
           <span>Key Test</span>
-          <span>Mechanical Keyboard Test</span>
+          <span>Keyboard Check</span>
           <span>Laptop Keyboard Test</span>
-          <span>Windows Keyboard Test</span>
-          <span>Linux Keyboard Test</span>
-          <span>macOS Keyboard Test</span>
+          <span>Mechanical Keyboard Test</span>
         </div>
-      </div>
-    </section>
+      </section>
+    </main>
   );
 }
 
