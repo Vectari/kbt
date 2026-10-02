@@ -5,13 +5,12 @@
   color: #d7dbe1;
 }
 
-.seo-intro {
-  max-width: 900px;
-  margin: 0 auto 64px;
-  text-align: center;
+.content-introduction {
+  max-width: 1200px;
+  margin: 0 auto 80px;
 }
 
-.seo-eyebrow {
+.content-eyebrow {
   display: inline-block;
   margin-bottom: 12px;
   color: #63c985;
@@ -21,98 +20,143 @@
   text-transform: uppercase;
 }
 
-.seo-intro h2,
-.seo-section-heading h2,
-.seo-final h2 {
-  margin: 0 0 18px;
+.content-introduction h2,
+.section-heading h2,
+.content-final h2 {
+  margin: 0 0 20px;
   color: #f1f3f5;
   font-size: clamp(28px, 4vw, 42px);
-  line-height: 1.1;
+  line-height: 1.12;
   letter-spacing: -0.03em;
 }
 
-.seo-intro p,
-.seo-section-heading p,
-.seo-final p {
+.content-introduction p,
+.section-heading p,
+.content-final p {
   color: #9299a3;
-  font-size: 16px;
+  font-size: 15px;
   line-height: 1.8;
 }
 
-.seo-intro .seo-lead {
-  color: #c5cad1;
+.content-introduction .content-lead {
+  color: #c6ccd3;
   font-size: 18px;
-  line-height: 1.7;
+  line-height: 1.75;
 }
 
-.seo-grid {
+.guide-section {
+  margin-bottom: 82px;
+}
+
+.section-heading {
+  max-width: 850px;
+  margin-bottom: 32px;
+}
+
+.guide-steps {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 18px;
-  margin-bottom: 72px;
+  gap: 12px;
 }
 
-.seo-card {
-  position: relative;
-  padding: 30px;
+.guide-step {
+  display: grid;
+  grid-template-columns: 54px 1fr;
+  gap: 22px;
+  padding: 28px;
   border: 1px solid #1c2026;
-  border-radius: 14px;
+  border-radius: 12px;
   background: #0d1014;
 }
 
-.seo-card-number {
-  display: block;
-  margin-bottom: 18px;
-  color: #4ade80;
+.guide-step > span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border: 1px solid #285c3c;
+  border-radius: 8px;
+  color: #63c985;
+  background: #10281a;
   font-size: 11px;
   font-weight: 800;
-  letter-spacing: 0.12em;
 }
 
-.seo-card h3,
-.problem-item h3,
-.use-cases h3,
+.guide-step h3,
+.diagnostic-grid h3,
+.platform-grid h3,
+.keyboard-types h3,
+.keyboard-size-card h3,
 .faq-item h3 {
-  margin: 0 0 12px;
+  margin: 0 0 9px;
   color: #e9edf1;
   font-size: 18px;
 }
 
-.seo-card p,
-.seo-card li,
-.problem-item p,
-.use-cases p,
+.guide-step p,
+.diagnostic-grid p,
+.platform-grid p,
+.keyboard-types p,
+.keyboard-size-card p,
 .faq-item p {
+  margin: 0;
   color: #8f97a2;
   font-size: 14px;
   line-height: 1.75;
 }
 
-.seo-card p {
-  margin: 0 0 18px;
-}
-
-.seo-card ol,
-.seo-card ul {
-  margin: 0 0 18px;
-  padding-left: 20px;
-}
-
-.seo-card li {
-  margin-bottom: 7px;
-}
-
-.seo-card strong {
+.guide-step strong {
   color: #cbd1d8;
 }
 
-.seo-section {
-  margin-bottom: 76px;
+.diagnostic-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
 }
 
-.seo-section-heading {
-  max-width: 780px;
-  margin-bottom: 30px;
+.diagnostic-grid article,
+.platform-grid article,
+.keyboard-types article {
+  padding: 28px;
+  border: 1px solid #1c2026;
+  border-radius: 12px;
+  background: #0d1014;
+}
+
+.diagnostic-grid article {
+  border-left: 2px solid #285c3c;
+  border-radius: 0 12px 12px 0;
+}
+
+.checklist {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.checklist > div {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 18px 20px;
+  border: 1px solid #1c2026;
+  border-radius: 10px;
+  background: #0d1014;
+}
+
+.checklist span {
+  flex: 0 0 auto;
+  color: #4ade80;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.checklist p {
+  margin: 0;
+  color: #9aa1aa;
+  font-size: 14px;
+  line-height: 1.5;
 }
 
 .keyboard-size-grid {
@@ -121,68 +165,43 @@
   gap: 12px;
 }
 
-.layout-card {
-  min-height: 160px;
+.keyboard-size-card {
+  min-height: 190px;
   padding: 24px;
   border: 1px solid #1c2026;
   border-radius: 12px;
   background: #0d1014;
 }
 
-.layout-card-size {
-  margin-bottom: 14px;
-  color: #f0f2f4;
-  font-size: 25px;
-  font-weight: 800;
+.keyboard-size-card > strong {
+  display: block;
+  margin-bottom: 18px;
+  color: #63c985;
+  font-size: 24px;
 }
 
-.layout-card p {
-  margin: 0;
-  color: #858d98;
+.keyboard-size-card h3 {
+  font-size: 16px;
+}
+
+.keyboard-size-card p {
   font-size: 13px;
-  line-height: 1.65;
 }
 
-.problem-list {
+.platform-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.keyboard-types {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 14px;
 }
 
-.problem-item {
-  padding: 26px;
-  border-left: 2px solid #285c3c;
-  background: #0d1014;
-  border-radius: 0 10px 10px 0;
-}
-
-.problem-item p {
-  margin: 0;
-}
-
-.use-cases-section {
-  padding: 34px;
-  border: 1px solid #1c2026;
-  border-radius: 14px;
-  background: #0b0e12;
-}
-
-.use-cases {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 34px 50px;
-}
-
-.use-cases h3 {
-  margin-bottom: 8px;
-}
-
-.use-cases p {
-  margin: 0;
-}
-
 .faq-section {
-  max-width: 950px;
+  max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -192,52 +211,52 @@
 }
 
 .faq-item {
-  padding: 26px 0;
+  padding: 27px 0;
   border-bottom: 1px solid #1c2026;
 }
 
 .faq-item h3 {
-  margin-bottom: 10px;
   font-size: 17px;
 }
 
 .faq-item p {
-  margin: 0;
+  max-width: 850px;
 }
 
-.seo-final {
-  max-width: 900px;
+.content-final {
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 46px;
+  padding: 48px;
   border: 1px solid #1c2026;
   border-radius: 16px;
   background: #0d1014;
   text-align: center;
 }
 
-.seo-final p {
+.content-final p {
   max-width: 720px;
-  margin: 0 auto 24px;
+  margin: 0 auto;
 }
 
-.keyword-chips {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 8px;
+@media (max-width: 1000px) {
+  .keyboard-size-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .platform-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
-.keyword-chips span {
-  padding: 7px 10px;
-  border: 1px solid #20262d;
-  border-radius: 6px;
-  color: #7f8792;
-  background: #090c10;
-  font-size: 11px;
-}
+@media (max-width: 760px) {
+  .seo-content {
+    width: min(100% - 24px, 1180px);
+    padding: 60px 0 80px;
+  }
 
-@media (max-width: 900px) {
-  .seo-grid {
+  .diagnostic-grid,
+  .keyboard-types,
+  .checklist {
     grid-template-columns: 1fr;
   }
 
@@ -245,39 +264,19 @@
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .problem-list {
-    grid-template-columns: 1fr;
+  .guide-step {
+    grid-template-columns: 42px 1fr;
+    gap: 16px;
+    padding: 22px;
   }
 }
 
-@media (max-width: 600px) {
-  .seo-content {
-    width: min(100% - 24px, 1180px);
-    padding: 56px 0 70px;
-  }
-
-  .seo-intro {
-    margin-bottom: 48px;
-  }
-
-  .seo-card {
-    padding: 24px;
-  }
-
+@media (max-width: 500px) {
   .keyboard-size-grid {
     grid-template-columns: 1fr;
   }
 
-  .use-cases {
-    grid-template-columns: 1fr;
-    gap: 26px;
-  }
-
-  .use-cases-section {
-    padding: 24px;
-  }
-
-  .seo-final {
-    padding: 30px 22px;
+  .content-final {
+    padding: 32px 22px;
   }
 }
